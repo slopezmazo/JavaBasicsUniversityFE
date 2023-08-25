@@ -2,18 +2,26 @@ package java.com.university.staff;
 
 public abstract class Teacher extends Person {
     protected Double baseSalary;
-    protected Double salary = (double) 0;
+    protected Double teacherSalary = (double) 0;
+    protected String teacherType;
 
-    public Teacher(String id, String name, Double baseSalary) {
+    public Teacher(String id, String name, Double baseSalary,String teacherType) {
         super(id, name);
         this.baseSalary = baseSalary;
+        this.teacherType = teacherType;
     }
 
     public Double getSalary() {
-        return salary;
+        return teacherSalary;
+    }
+
+    public String getType() {
+        return teacherType;
     }
 
     public void setSalary(Double salary) {
-        this.salary = salary;
+        this.teacherSalary = salary;
     }
+
+
 }
