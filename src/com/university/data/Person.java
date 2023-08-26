@@ -1,4 +1,4 @@
-package java.com.university.staff;
+package com.university.data;
 
 public abstract class Person {
     protected String personId;
@@ -9,7 +9,7 @@ public abstract class Person {
         this.personName = name;
     }
 
-    public String getPersonId() {
+    public String getId() {
         return personId;
     }
 

@@ -1,4 +1,4 @@
-package java.com.university.staff;
+package com.university.data;
 
 public class Student extends Person{
     private int age;
