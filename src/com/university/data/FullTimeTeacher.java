@@ -1,4 +1,4 @@
-package java.com.university.staff;
+package com.university.data;
 
 public class FullTimeTeacher extends Teacher{
     private int yearOfExperience;

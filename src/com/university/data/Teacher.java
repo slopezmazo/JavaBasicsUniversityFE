@@ -1,4 +1,4 @@
-package java.com.university.staff;
+package com.university.data;
 
 public abstract class Teacher extends Person {
     protected Double baseSalary;

@@ -1,7 +1,5 @@
-package java.com.university.universityclass;
+package com.university.data;
 
-import java.com.university.staff.Student;
-import java.com.university.staff.Teacher;
 import java.util.ArrayList;
 
 public class UniversityClass {
@@ -31,11 +29,15 @@ public class UniversityClass {
         return classAssignedClassroom;
     }
 
-    public ArrayList<Student> getStudents() {
+    public ArrayList<Student> getClassStudents() {
         return classStudents;
     }
 
     public Teacher getTeacher() {
         return classTeacher;
+    }
+
+    public void enrollNewStudent(Student student) {
+        this.classStudents.add(student);
     }
 }
