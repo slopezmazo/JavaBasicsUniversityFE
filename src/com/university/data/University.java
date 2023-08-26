@@ -28,8 +28,15 @@ public class University {
         Stream<Student> filtered = this.students.stream().filter(student->id.equals(student.getId()));
         return filtered.count() > 0;
     }
+    public boolean checkClassExistence(String id){
+        Stream<UniversityClass> filtered = this.universityClasses.stream().filter(universityClass->id.equals(universityClass.getId()));
+        return filtered.count() > 0;
+    }
     public void enrollStudent(int choosenIndex, Student student) {
         this.universityClasses.get(choosenIndex-1).enrollNewStudent(student);
+    }
 
+    public void addNewUniversityClasses(UniversityClass newUniversityClass) {
+        this.universityClasses.add( newUniversityClass);
     }
 }

@@ -112,7 +112,63 @@ public class Main {
                         break;
 
                     case 4:
-                        // Implement code to create a new class and add a teacher, students, and data
+                        String classId;
+                        String className;
+                        String classAssignedClassroom;
+                        ArrayList<Student> classStudents = new ArrayList<Student>();
+                        String classStudentsInput;
+                        Teacher classTeacher;
+                        int choosenTeacher;
+
+
+                        scanner.nextLine();
+                        System.out.println("Please type the following: ");
+                        System.out.println("Class id: ");
+                        classId = scanner.nextLine();
+                        System.out.println("Class name: ");
+                        className = scanner.nextLine();
+                        System.out.println("Class assigned classroom: ");
+                        classAssignedClassroom = scanner.nextLine();
+
+                        if (university.checkClassExistence(classId)){
+                            System.out.println("The class with ID: "+classId+" already exist");
+                        }
+                        else{
+                            System.out.println("Pick one teacher");
+                            boolean cond = true;
+                            while(cond){
+                                int i=1;
+                                for(Teacher t:university.getTeachers()){
+                                    System.out.println(i+": "+t.getName());
+                                    i++;
+                                }
+                                choosenTeacher = scanner.nextInt();
+                                scanner.nextLine();
+                                if(choosenTeacher>0 && choosenTeacher<=university.getTeachers().size()){
+                                    classTeacher=university.getTeachers().get(choosenTeacher-1);
+
+                                    System.out.println("Type the students indexes that you want to enroll to this class ");
+                                    System.out.println("split the input bu \',\' (eg:1,2,3) ");
+                                    i=1;
+                                    for(Student student : university.getStudents()){
+                                        System.out.println(i+": "+student.getName());
+                                        i++;
+                                    }
+                                    classStudentsInput=scanner.nextLine();
+                                    String[] indexes = classStudentsInput.split(",");
+                                    for (String index : indexes){
+                                        classStudents.add(university.getStudents().get(Integer.parseInt(index)-1));
+                                    }
+
+                                    UniversityClass newClass = new UniversityClass(classId,className,classAssignedClassroom,classStudents,classTeacher);
+                                    university.addNewUniversityClasses(newClass);
+                                    System.out.println("New class created successfully");
+                                    cond = false;
+                                }else{
+                                    System.out.println("Invalid choice. Please select a valid option.");
+                                }
+                            }
+                        }
                         break;
 
                     case 5:
