@@ -1,6 +1,8 @@
 package com.university.data;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class University {
@@ -28,6 +30,15 @@ public class University {
         Stream<Student> filtered = this.students.stream().filter(student->id.equals(student.getId()));
         return filtered.count() > 0;
     }
+    public String getStudentNameById(String id){
+        List<Student> filtered = this.students.stream().filter(student->id.equals(student.getId())).collect(Collectors.toList());
+        if (filtered.size() > 0){
+            return filtered.get(0).getName();
+        }
+        else {
+            return "";
+        }
+    }
     public boolean checkClassExistence(String id){
         Stream<UniversityClass> filtered = this.universityClasses.stream().filter(universityClass->id.equals(universityClass.getId()));
         return filtered.count() > 0;
@@ -38,5 +49,17 @@ public class University {
 
     public void addNewUniversityClasses(UniversityClass newUniversityClass) {
         this.universityClasses.add( newUniversityClass);
+    }
+
+    public ArrayList<UniversityClass> getStudentClasses(String id){
+        ArrayList<UniversityClass> studentClasses = new ArrayList<>();
+        for (UniversityClass universityClass : this.universityClasses){
+            Stream<Student> filtered = universityClass.getClassStudents().stream().filter(student->id.equals(student.getId()));
+            if (filtered.count() > 0){
+                studentClasses.add(universityClass);
+            }
+        }
+
+        return studentClasses;
     }
 }

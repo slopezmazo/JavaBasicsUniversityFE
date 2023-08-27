@@ -148,7 +148,7 @@ public class Main {
                                     classTeacher=university.getTeachers().get(choosenTeacher-1);
 
                                     System.out.println("Type the students indexes that you want to enroll to this class ");
-                                    System.out.println("split the input bu \',\' (eg:1,2,3) ");
+                                    System.out.println("split the input by \',\' (eg:1,2,3) ");
                                     i=1;
                                     for(Student student : university.getStudents()){
                                         System.out.println(i+": "+student.getName());
@@ -172,7 +172,20 @@ public class Main {
                         break;
 
                     case 5:
-                        // Implement code to list all classes in which a given student is included
+                        scanner.nextLine();
+                        String studentID;
+                        System.out.println("Type the student id:");
+                        studentID=scanner.nextLine();
+                        if (university.checkStudentExistence(studentID)){
+
+                            System.out.println(university.getStudentNameById(studentID)+" with ID: "+studentID+" is enrolled with:");
+                            for (UniversityClass universityClass:university.getStudentClasses(studentID)){
+                                System.out.println("<> "+universityClass.getName());
+                            }
+                        }else{
+                            System.out.println("There is no student with the provided ID");
+                        }
+
                         break;
 
                     case 6:
@@ -184,7 +197,7 @@ public class Main {
                 }
 
                 scanner.nextLine();
-                System.out.println("Please press enter to continue twice...");
+                System.out.println("Please press enter twice to continue ...");
                 scanner.nextLine();
             } catch (java.util.InputMismatchException e){
                 System.out.println("Invalid type input. Please select a valid option.");
