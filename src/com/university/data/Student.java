@@ -7,8 +7,4 @@ public class Student extends Person{
         super(id, name);
         this.age=age;
     }
-
-    public int getAge() {
-        return age;
-    }
 }
